@@ -1,29 +1,35 @@
-$(document).ready(function() {
 /**
  *  searchbar autocomplete
  */
-  function initAutocomplete() {
-    // Create the search box and link it to the UI element.
-    var input = document.getElementById('pac-input');
-    var searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+function initAutocomplete() {
+  // Create the search box and link it to the UI element.
+  var inputs = document.getElementsByClassName('location');
+  var fromSearchBox = new google.maps.places.SearchBox(inputs[0]);
+  var toSearchBox = new google.maps.places.SearchBox(inputs[1]);
 
-    // Bias the SearchBox results towards current map's viewport.
-    map.addListener('bounds_changed', function() {
-      searchBox.setBounds(map.getBounds());
-    });
-  }
-
+// Listen for the event fired when the user selects a prediction and retrieve
+// more details for that place.
+  fromSearchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+    if (places.length == 0) {
+      return;
+    }
+  });
+  toSearchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+    if (places.length == 0) {
+      return;
+    }
+  });
+}
 
 /**
  *  Socket.io
  */
 var socket = io();
 socket.on('connect', function() {
-    console.log('Connected');
+  console.log('Connected');
 });
 socket.on('app:welcome', function(msg){
-    console.log(msg);
-});
-
+  console.log(msg);
 });

@@ -10,6 +10,9 @@ html
     link(rel='shortcut icon', href='/favicon.png')
     link(rel='stylesheet', href='/css/main.css')
 
+    script(src='https://cdn.socket.io/socket.io-1.2.0.js')
+    script(src='/js/lib/jquery-2.2.0.min.js')
+    script(src='/js/lib/bootstrap.min.js')
   body
     include partials/header
 
@@ -19,11 +22,8 @@ html
 
     include partials/footer
 
-    script(src='https://cdn.socket.io/socket.io-1.2.0.js')
-    script(src='/js/lib/jquery-2.2.0.min.js')
-    script(src='/js/lib/bootstrap.min.js')
     script(src='/js/main.js')
-    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCxCdCGx5zITopSKv_IVtG2t_uHHDq52so&libraries=places&callback=initAutocomplete', async='', defer='')
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCxCdCGx5zITopSKv_IVtG2t_uHHDq52so&libraries=places&callback=initAutocomplete')
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.

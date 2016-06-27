@@ -6,15 +6,11 @@ block content
   form.form-inline#searchbar(action='/search', method='post')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
-      input#from.form-control(type='text', placeholder='From')
+      input#from.form-control.location(type='text', placeholder='From')
     .form-group
-      input#to.form-control(type='text', placeholder='Destination')
+      input#to.form-control.location(type='text', placeholder='Destination')
     .form-group
       input#friendsNumber.form-control(type='text', placeholder='No. of friends')
     .form-group
       input#date.form-control(type='text' placeholder='dateTime')
-    script(type='text/javascript').
-      $(function () {
-      $('#datetimepicker4').datetimepicker();
-      });
     button.btn.btn-default(type='submit') Find to Search
