@@ -6,13 +6,13 @@ block content
   form.form-inline#searchbar(action='/search', method='post')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
-      input#from.form-control.location(type='text', placeholder='From')
+      input#origin.form-control.location(type='text', placeholder='From')
     .form-group
-      input#to.form-control.location(type='text', placeholder='Destination')
+      input#destination.form-control.location(type='text', placeholder='Destination')
     .form-group
       select#friends.form-control(type='text', placeholder='No. of friends')
         each val in [1,2,3,4,5]
           option= val + ' Friends'
     .form-group
       input#datetimepicker.form-control(type='text' placeholder='Date & Time')
-    button.btn.btn-default(type='submit') Find to Search
+    button.btn.btn-default(type='submit') Search

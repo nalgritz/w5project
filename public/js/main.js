@@ -10,13 +10,13 @@ function initAutocomplete() {
 // Listen for the event fired when the user selects a prediction and retrieve
 // more details for that place.
   fromSearchBox.addListener('places_changed', function() {
-    var places = searchBox.getPlaces();
+    var places = fromSearchBox.getPlaces();
     if (places.length == 0) {
       return;
     }
   });
   toSearchBox.addListener('places_changed', function() {
-    var places = searchBox.getPlaces();
+    var places = toSearchBox.getPlaces();
     if (places.length == 0) {
       return;
     }
