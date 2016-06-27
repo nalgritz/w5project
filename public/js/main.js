@@ -33,3 +33,8 @@ socket.on('connect', function() {
 socket.on('app:welcome', function(msg){
   console.log(msg);
 });
+
+/*
+ *  datetimepicker
+ */
+jQuery('#datetimepicker').datetimepicker();

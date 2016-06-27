@@ -10,7 +10,11 @@ block content
     .form-group
       input#to.form-control.location(type='text', placeholder='Destination')
     .form-group
-      input#friendsNumber.form-control(type='text', placeholder='No. of friends')
+      select#friends.form-control(type='text', placeholder='No. of friends')
+        each val in [1,2,3,4,5]
+          option= val + ' Friends'
     .form-group
-      input#date.form-control(type='text' placeholder='dateTime')
+      input#datetimepicker.form-control(type='text' placeholder='Date & Time')
+    script(type='text/javascript').
+      $('#datetimepicker').datetimepicker();
     button.btn.btn-default(type='submit') Find to Search
