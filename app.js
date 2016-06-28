@@ -17,6 +17,7 @@ const passport = require('passport');
 const expressValidator = require('express-validator');
 const sass = require('node-sass-middleware');
 const multer = require('multer');
+const requestMod = require('request');
 // const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
 /**
@@ -40,6 +41,7 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
+const requestController = require('./controllers/request');
 
 /**
  * API keys and Passport configuration.
@@ -124,6 +126,8 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+app.post('/search', requestController.postRequest);
+app.get('/search', requestController.getRequests);
 
 /**
  * API examples routes.

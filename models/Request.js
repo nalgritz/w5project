@@ -5,9 +5,24 @@ const requestSchema = new mongoose.Schema({
   dest: Object,
   friends: Number,
   dateTime: Date,
-  token: Array
+  ladyOnly: Boolean,
+  minPassnger: Number,
+  key: String
 }, { timestamps: true });
 
 const Request = mongoose.model('Request', requestSchema);
 
-module.exports = Request;
+module.exports = Request
+
+
+/*
+const requestSchema = new mongoose.Schema({
+  origin: Object,
+  dest: Object,
+  friends: Number,
+  dateTime: Date,
+  ladyOnly: Boolean,
+  minPasnger: Number,
+  key: String
+}, { timestamps: true });
+*/

@@ -1,18 +1,19 @@
 extends layout
 
 block content
-  h1 Splits
-  p.lead A boilerplate for Node.js web applications.
+  h1 SPLITS
+  p.lead A Taxi Sharing Platform.
   form.form-inline#searchbar(action='/search', method='post')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
-      input#origin.form-control.location(type='text', placeholder='From')
+      input#origin.form-control.location(type='origin', placeholder='From')
     .form-group
-      input#destination.form-control.location(type='text', placeholder='Destination')
+      input#destination.form-control.location(type='destination', placeholder='To')
     .form-group
-      select#friends.form-control(type='text', placeholder='No. of friends')
-        each val in [1,2,3,4,5]
-          option= val + ' Friends'
+      select#friends.form-control(type='friends', placeholder='No. of friends')
+        option 1 Person
+        each val in [2,3,4,5]
+          option= val + ' Persons'
     .form-group
-      input#datetimepicker.form-control(type='text' placeholder='Date & Time')
-    button.btn.btn-default(type='submit') Search
+      input#datetimepicker.form-control(type='datetime' placeholder='Date & Time')
+    button.btn.btn-default#search(type='submit') Search

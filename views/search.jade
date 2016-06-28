@@ -1,6 +1,16 @@
-extends ../layout
+extends layout
 
 block content
-  .map-search
-    .sidebar
-      .filter test
+  .filter
+    .row
+      label Dates
+      form.col-lg-9.trip-form
+        .form-group.col-md-4.col-sm-6.row-space-1-sm
+          input#origin.form-control.location(type='origin', placeholder='From')
+        .form-group.col-md-4.col-sm-6.row-space-1-sm
+          input#destination.form-control.location(type='destination', placeholder='To')
+        .form-group
+          select#friends.form-control(type='friends', placeholder='No. of friends')
+              option 1 Person
+              each val in [2,3,4,5]
+                option= val + ' Persons'
