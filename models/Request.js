@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const requestSchema = new mongoose.Schema({
-  origin: Object,
-  dest: Object,
+  origin: String,
+  dest: String,
   friends: Number,
   dateTime: Date,
   ladyOnly: Boolean,
