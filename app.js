@@ -16,8 +16,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const expressValidator = require('express-validator');
 const sass = require('node-sass-middleware');
-const multer = require('multer');
-const requestMod = require('request');
+// const multer = require('multer');
 // const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
 /**
@@ -128,6 +127,8 @@ app.post('/account/delete', passportConfig.isAuthenticated, userController.postD
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.post('/search', requestController.postRequest);
 app.get('/search', requestController.getRequests);
+// app.post('/', locationController.postLocation);
+
 
 /**
  * API examples routes.

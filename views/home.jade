@@ -11,9 +11,9 @@ block content
       input#destination.form-control.location(type='text' name='dest', placeholder='To')
     .form-group
       select#friends.form-control(type='integer' name='friends', placeholder='No. of friends')
-        option 1 Person
+        option(value=1) 1 Person
         each val in [2,3,4,5]
-          option= val + ' Persons'
+          option(value=val)= val + ' Persons'
     .form-group
       input#datetimepicker.form-control(type='text' name='datetime' placeholder='Date & Time')
     button.btn.btn-default#search(type='submit') Search
