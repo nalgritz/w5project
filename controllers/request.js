@@ -100,10 +100,11 @@ exports.getRequests = (req, res) => {
   res.render('search', {
     title: 'Search Result',
   });
-  // get all the users
-  Request.find({}, function(err, users) {
-    if (err) throw err;
-    // object of all the users
-    console.log(users);
-  });
 };
+
+  // // get all the users
+  // Request.find({}, function(err, users) {
+  //   if (err) throw err;
+  //   // object of all the users
+  //   console.log(users);
+  // });
