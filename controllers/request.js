@@ -86,7 +86,7 @@ exports.postRequest = (req, res, next) => {
           // object of all the users
           console.log(users);
         });
-        res.redirect('/search').status(200);
+        res.json(locations).status(200);
       });
     });
   });
@@ -100,11 +100,10 @@ exports.getRequests = (req, res) => {
   res.render('search', {
     title: 'Search Result',
   });
+  // get all the users
+  Request.find({}, function(err, users) {
+    if (err) throw err;
+    // object of all the users
+    console.log(users);
+  });
 };
-
-  // // get all the users
-  // Request.find({}, function(err, users) {
-  //   if (err) throw err;
-  //   // object of all the users
-  //   console.log(users);
-  // });
