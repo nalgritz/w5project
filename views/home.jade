@@ -1,8 +1,9 @@
 extends layout
 
 block content
-  h1 SPLITS
-  p.lead A Taxi Sharing Platform.
+  #titleset
+    h1 SPLITS
+    p.lead A Taxi Sharing Platform.
   form.form-inline#searchbar(action='/search', method='post')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group

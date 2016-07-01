@@ -28,9 +28,11 @@ var findOthers = function(lng, lat, pger, cb) {
           $maxDistance: maxDistance
         }
       }
-    }
+    },
     // find from passenger limit to taxi
-    // 'friends' : { $lte: optimalPassengers }
+    friends : { $lte: optimalPassengers },
+    dateTime: { $gte: Date.now() - 5400000,
+                $lte: Date.now() + 5400000}
   }).limit(limit).exec(cb);
 };
 
@@ -50,14 +52,13 @@ exports.postRequest = (req, res, next) => {
   // Using callback
   geocoder.batchGeocode(add, function(err, data) {
     if (err) throw err;
-
     var originLng = data[0].value[0].longitude;
     var originLat = data[0].value[0].latitude;
     var originCoords = [originLng, originLat];
     var destLng = data[1].value[0].longitude;
     var destLat = data[1].value[0].latitude;
     var destCoords = [destLng, destLat];
-
+    var datetime = Date.parse(req.body.datetime);
     var request = new Request({
       origin      : {
         add: req.body.origin,
@@ -72,22 +73,23 @@ exports.postRequest = (req, res, next) => {
         }
       },
       friends     : parseInt(req.body.friends),
-      datetime    : req.body.datetime,
+      dateTime    : datetime
     });
-    request.save(function(err){
+    request.save(function(err, requestData){
       if(err) throw err;
-      findOthers(request.origin.lng, request.origin.lat, request.friends, function(reqeustResponse, err, locations){
+      findOthers(request.origin.lng, request.origin.lat, request.friends, function(err, locations){
         if (err) {
-          console.log(err);
           res.json(err).status(500);
-        }
-        Request.find({}, function(err, users) {
-          if (err) throw err;
-          // object of all the users
-          console.log(users);
-        });
-        res.json(locations).status(200);
+        };
       });
+      // get the new data result in model format <--- should be able to retrieve data to search input field as well
+      // res.json(requestData);
+      // res.redirect('/search');
+      // Request.find({}, function(err, users) {
+      //   if (err) throw err;
+      //   // object of all the users
+      //   console.log(users);
+      // });
     });
   });
 };
@@ -97,14 +99,7 @@ exports.postRequest = (req, res, next) => {
  * Results page.
  */
 exports.getRequests = (req, res) => {
-  res.render('search', {
+  res.render('/search', {
     title: 'Search Result',
   });
 };
-
-  // // get all the users
-  // Request.find({}, function(err, users) {
-  //   if (err) throw err;
-  //   // object of all the users
-  //   console.log(users);
-  // });
