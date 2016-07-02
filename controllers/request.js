@@ -18,21 +18,16 @@ var findOthers = function(lng, lat, pger, cb) {
   var optimalPassengers = 5 - parseInt(pger);
   // find entries
   Request.find({
-    origin: {
-      loc: {
-        $near: {
-          $geometry: {
-            type: 'Point',
-            coordinates: coords
-          },
-          $maxDistance: maxDistance
-        }
+    'origin.loc':{
+      $near: {
+        $geometry: {
+          'type': 'Point',
+          'coordinates': coords
+        },
+        $maxDistance: maxDistance
       }
     },
-    // find from passenger limit to taxi
     friends : { $lte: optimalPassengers },
-    dateTime: { $gte: Date.now() - 5400000,
-                $lte: Date.now() + 5400000}
   }).limit(limit).exec(cb);
 };
 
@@ -77,19 +72,17 @@ exports.postRequest = (req, res, next) => {
     });
     request.save(function(err, requestData){
       if(err) throw err;
-      findOthers(request.origin.lng, request.origin.lat, request.friends, function(err, locations){
+      findOthers(originLng, originLat, request.friends, function(err, locations){
         if (err) {
           res.json(err).status(500);
         };
+        console.log('A');
+        console.log(locations);
+        res.render('search', {
+          title: 'Search Result'
+        });
+        console.log('B');
       });
-      // get the new data result in model format <--- should be able to retrieve data to search input field as well
-      // res.json(requestData);
-      // res.redirect('/search');
-      // Request.find({}, function(err, users) {
-      //   if (err) throw err;
-      //   // object of all the users
-      //   console.log(users);
-      // });
     });
   });
 };
@@ -99,7 +92,7 @@ exports.postRequest = (req, res, next) => {
  * Results page.
  */
 exports.getRequests = (req, res) => {
-  res.render('/search', {
+  res.render('search', {
     title: 'Search Result',
   });
 };
