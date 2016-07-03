@@ -26,7 +26,7 @@ html
     script(src='/js/lib/jquery-2.2.0.min.js')
     script(src='/js/lib/jquery.datetimepicker.min.js')
     script(src='/js/lib/bootstrap.min.js')
-    script(src='/js/main.js')
+    //- script(src='/js/main.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCxCdCGx5zITopSKv_IVtG2t_uHHDq52so&libraries=places&callback=initAutocomplete')
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
@@ -37,6 +37,64 @@ html
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-XXXXX-X', 'auto');
       ga('send', 'pageview');
+
+      /**
+       *  searchbar autocomplete
+       */
+      function initAutocomplete() {
+        // Create the search box and link it to the UI element.
+        var inputs = document.getElementsByClassName('location');
+        var fromSearchBox = new google.maps.places.SearchBox(inputs[0]);
+        var toSearchBox = new google.maps.places.SearchBox(inputs[1]);
+
+      // Listen for the event fired when the user selects a prediction and retrieve
+      // more details for that place.
+        fromSearchBox.addListener('places_changed', function() {
+          var places = fromSearchBox.getPlaces();
+          if (places.length == 0) {
+            return;
+          }
+        });
+        toSearchBox.addListener('places_changed', function() {
+          var places = toSearchBox.getPlaces();
+          if (places.length == 0) {
+            return;
+          }
+        });
+      };
+
+      /*
+       *  datetimepicker
+       */
+      jQuery('#datetimepicker').datetimepicker({
+       allowTimes:[
+        '00:00', '00:30',
+        '01:00', '01:30',
+        '02:00', '02:30',
+        '03:00', '03:30',
+        '04:00', '04:30',
+        '05:00', '05:30',
+        '06:00', '06:30',
+        '07:00', '07:30',
+        '08:00', '08:30',
+        '09:00', '09:30',
+        '10:00', '10:30',
+        '11:00', '11:30',
+        '12:00', '12:30',
+        '13:00', '13:30',
+        '14:00', '14:30',
+        '15:00', '15:30',
+        '16:00', '16:30',
+        '17:00', '17:30',
+        '18:00', '18:30',
+        '19:00', '19:30',
+        '20:00', '20:30',
+        '21:00', '21:30',
+        '22:00', '22:30',
+        '23:00', '23:30',
+        ],
+        minDate: '0'
+      });
 
       //- var refresh = function (){
       //- $.ajax( "/search" )
