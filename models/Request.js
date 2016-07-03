@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const requestSchema = new mongoose.Schema({
+  id: Number,
   origin      : {
     add: String,
     loc: {

@@ -9,8 +9,9 @@ block content
           input#origin.form-control.location(type='text', name='origin', placeholder='From')
         .form-group.col-md-4.col-sm-6.row-space-1-sm
           input#destination.form-control.location(type='text', name='destination', placeholder='To')
-        .form-group
+        .form-group.col-md-4.col-sm-6.row-space-1-sm
           select#friends.form-control(type='integer', name='friends', placeholder='No. of friends')
             option(value=1) 1 Person
             each val in [2,3,4,5]
               option(value=val)= val + ' Persons'
+  hr

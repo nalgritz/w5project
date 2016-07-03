@@ -66,3 +66,14 @@ jQuery('#datetimepicker').datetimepicker({
   ],
   minDate: '0'
 });
+
+  // // change background in every 15 sec
+  // var rotateBackground = function() {
+  //   var curImgId = 0;
+  //   var numberOfImages = 5; // Change this to the number of background images
+  //   window.setInterval(function() {
+  //   $('body').css('background', "url('/assets/background' + curImgId + '.jpg')");
+  //     curImgId = (curImgId + 1) % numberOfImages;
+  //     console.log('run')}, 15*1000);
+  // }();
+  // rotateBackground();

@@ -13,7 +13,7 @@ html
     link(href='https://fonts.googleapis.com/css?family=Montserrat', rel='stylesheet')
     link(href='https://fonts.googleapis.com/css?family=Libre+Franklin', rel='stylesheet')
 
-  body(background='/assets/city-cars-traffic-lights.jpeg')
+  body(background='/assets/background1.jpg')
     include partials/header
 
     .container
@@ -37,3 +37,24 @@ html
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-XXXXX-X', 'auto');
       ga('send', 'pageview');
+
+      //- var refresh = function (){
+      //- $.ajax( "/search" )
+      //-   .done(function(data) {
+      //-     // set up template
+      //-     for(var i=0; i<data.length; i++){
+      //-       var html = '<div class="box col-md-4 col-sm-12"><a href="#">'
+      //-           html += '<div class="resultid" type="hidden">'+data[i].id+'</div>'
+      //-           html += '<h6 class="resultuser">'+ data[i].user+'</h6>'
+      //-           html += '<div class="resultfrom">'+ data[i].add+'</div>'
+      //-           html += '<div class="resultto">'+ data[i].add+'</div>'
+      //-           html += '<div class="resultpsnger">'+ data[i].friends+'</div>'
+      //-           html += '<div class="resulttime">'+ data[i].dateTime+'</div></div>'
+      //-       $('hr').append(html);
+      //-     }
+      //-   })
+      //-   .fail(function(data) {
+      //-     console.log( "error" );
+      //-   });
+      //- }
+      //- refresh();
