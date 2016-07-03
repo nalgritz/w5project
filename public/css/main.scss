@@ -17,6 +17,8 @@ html {
 body {
   padding-top: 60px;
   margin-bottom: 75px;
+  font-family: 'Montserrat', sans-serif;
+  color: #FFF5D6;
 }
 
 footer {
@@ -25,10 +27,11 @@ footer {
   width: 100%;
   height: 45px;
   line-height: 45px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
-  p, ul {
-    margin-bottom: 0;
-  }
+p, ul {
+  margin-bottom: 0;
 }
 
 // Input Fields
@@ -36,6 +39,7 @@ footer {
 
 textarea {
   resize: vertical;
+
 }
 
 // Navbar
@@ -55,7 +59,7 @@ textarea {
 }
 
 // Thumbnails
-// -------------------------
+// -----FFD691
 
 .thumbnail {
   padding: 0;
@@ -65,7 +69,61 @@ textarea {
 
 // Font Icons
 // -------------------------
-
 .fa {
   margin-right: 6px;
+  font-size: 20px;
+}
+
+// contentcontainer
+// -------------------------
+#contentcontainer {
+  margin-top: 120px;
+}
+
+#titleset {
+  text-align: center;
+}
+
+// searchbar
+// -------------------------
+#searchbar {
+  text-align: center;
+  margin: 180px auto 30px auto;
+
+}
+
+.form-control {
+  height: 50px;
+  min-width: 250px;
+  border-radius: 2px;
+}
+
+#search {
+  width: 101px;
+  height: 50px;
+}
+
+#origin {
+  border-radius: 3px 0 0 3px;
+}
+
+#search {
+  border-radius: 0px 3px 3px 0;
+}
+
+.btn-social {
+  display: inline;
+  border-radius: 2px;
+  margin: 0 30px;
+}
+
+#loginapi {
+  margin: auto;
+}
+
+@media (max-width: 992px)  {
+  .btn-social {
+  display: block;
+  margin: 10px 0px;
+  }
 }

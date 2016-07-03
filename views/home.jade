@@ -1,16 +1,25 @@
 extends layout
 
 block content
-  h1 Splits
-  p.lead A boilerplate for Node.js web applications.
-  form.form-inline#searchbar(action='/search', method='post')
-    input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      input#from.form-control.location(type='text', placeholder='From')
-    .form-group
-      input#to.form-control.location(type='text', placeholder='Destination')
-    .form-group
-      input#friendsNumber.form-control(type='text', placeholder='No. of friends')
-    .form-group
-      input#date.form-control(type='text' placeholder='dateTime')
-    button.btn.btn-default(type='submit') Find to Search
+  #contentcontainer
+    #titleset
+      h1 SPLITS
+      p.lead
+        | The more we Share, the more we Have
+        br
+        |  - Leonard Nimoy
+    form.form-inline#searchbar(action='/search', method='post')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        input#origin.form-control.location(type='text' name='origin', placeholder='From')
+      .form-group
+        input#destination.form-control.location(type='text' name='dest', placeholder='To')
+      .form-group
+        select#friends.form-control(type='integer' name='friends', placeholder='No. of friends')
+          option(value=1) 1 Person
+          each val in [2,3,4,5]
+            option(value=val)= val + ' Persons'
+      .form-group
+        input#datetimepicker.form-control(type='text' name='datetime' placeholder='Date & Time')
+      .form-group
+        button.btn.btn-default#search(type='submit') Search
