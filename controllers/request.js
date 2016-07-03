@@ -31,6 +31,12 @@ var findOthers = function(lng, lat, pger, cb) {
   }).limit(limit).exec(cb);
 };
 
+var newRequestId = null;
+Request.count(function (error, callback) {
+  callback++;
+  newRequestId = callback;
+});
+
 /**
  * POST /search
  * Send search preference to object.
@@ -54,7 +60,11 @@ exports.postRequest = (req, res, next) => {
     var destLat = data[1].value[0].latitude;
     var destCoords = [destLng, destLat];
     var datetime = Date.parse(req.body.datetime);
+    Request.count(function(err, result){
+      console.log(Request.count());
+    })
     var request = new Request({
+      id          : newRequestId,
       origin      : {
         add: req.body.origin,
         loc: {
@@ -76,12 +86,9 @@ exports.postRequest = (req, res, next) => {
         if (err) {
           res.json(err).status(500);
         };
-        console.log('A');
         console.log(locations);
-        res.render('search', {
-          title: 'Search Result'
-        });
-        console.log('B');
+        res.json(locations);
+        // either res.render or res.json(locations)
       });
     });
   });
