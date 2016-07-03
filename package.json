@@ -43,6 +43,7 @@
     "morgan": "^1.7.0",
     "multer": "^1.1.0",
     "node-foursquare": "^0.3.0",
+    "node-geocoder": "^3.12.0",
     "node-linkedin": "^0.5.3",
     "node-sass-middleware": "^0.9.8",
     "nodemailer": "^2.4.2",
