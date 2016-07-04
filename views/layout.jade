@@ -39,19 +39,22 @@ html
       ga('send', 'pageview');
 
       //- var refresh = function (){
-      //- $.ajax( "/search" )
+      //-   $.ajax({
+      //-   url: "search",
+      //-   type: "GET"
+      //-   })
       //-   .done(function(data) {
       //-     // set up template
       //-     for(var i=0; i<data.length; i++){
-      //-       var html = '<div class="box col-md-4 col-sm-12"><a href="#">'
-      //-           html += '<div class="resultid" type="hidden">'+data[i].id+'</div>'
-      //-           html += '<h6 class="resultuser">'+ data[i].user+'</h6>'
-      //-           html += '<div class="resultfrom">'+ data[i].add+'</div>'
-      //-           html += '<div class="resultto">'+ data[i].add+'</div>'
-      //-           html += '<div class="resultpsnger">'+ data[i].friends+'</div>'
-      //-           html += '<div class="resulttime">'+ data[i].dateTime+'</div></div>'
-      //-       $('hr').append(html);
-      //-     }
+      //-       var html = '<div class="box col-md-4 col-sm-12"><a href="#">';
+      //-           html += '<div class="resultid" type="hidden">'+data[i].id+'</div>';
+      //-           html += '<h6 class="resultuser">'+ data[i].user+'</h6>';
+      //-           html += '<div class="resultfrom">'+ data[i].originAdd+'</div>';
+      //-           html += '<div class="resultto">'+ data[i].add+'</div>';
+      //-           html += '<div class="resultpsnger">'+ data[i].friends+'</div>';
+      //-           html += '<div class="resulttime">'+ data[i].dateTime+'</div></div>';
+      //-       $('#searchresult').append(html);
+      //-     };
       //-   })
       //-   .fail(function(data) {
       //-     console.log( "error" );

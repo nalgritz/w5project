@@ -60,9 +60,7 @@ exports.postRequest = (req, res, next) => {
     var destLat = data[1].value[0].latitude;
     var destCoords = [destLng, destLat];
     var datetime = Date.parse(req.body.datetime);
-    Request.count(function(err, result){
-      console.log(Request.count());
-    })
+    Request.count(function(err, result){});
     var request = new Request({
       id          : newRequestId,
       origin      : {
@@ -86,8 +84,10 @@ exports.postRequest = (req, res, next) => {
         if (err) {
           res.json(err).status(500);
         };
-        console.log(locations);
-        res.json(locations);
+        console.log(JSON.stringify(locations));
+        res.render('search', {
+          title: 'Search Result',
+        })
         // either res.render or res.json(locations)
       });
     });
